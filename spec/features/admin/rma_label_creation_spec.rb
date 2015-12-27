@@ -10,7 +10,6 @@ feature "Admin order RMA label creation", js: true do
 
   scenario 'creating gift card' do
     visit spree.edit_admin_order_return_authorization_path(rma.order, rma)
-    binding.pry
     click_on 'return-label-button'
   end
     #Spree::GiftCard.count.should eql(0)
