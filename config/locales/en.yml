@@ -1,0 +1,6 @@
+en:
+  spree:
+    generate_new_label: "Generate New Label"
+    order_number: "Order Number"
+    recently_viewed:
+      header: "Recently Viewed"

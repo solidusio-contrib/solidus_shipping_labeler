@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+rm -rf ./spec/dummy/
+
+env RUN_MIGRATIONS=true bundle exec rake test_app
+
+cd spec/dummy
+rails s
