@@ -1,6 +1,6 @@
 module SpreeShippingLabeler
   class Engine < Rails::Engine
-    engine_name 'spree_shipping_labeler'
+    engine_name 'solidus_shipping_labeler'
 
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), "../../app/**/*_decorator*.rb")) do |c|

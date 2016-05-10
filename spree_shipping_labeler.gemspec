@@ -5,9 +5,9 @@ Gem::Specification.new do |s|
 
   s.name        = 'solidus_shipping_labeler'
   s.version     = '2.3.0'
-  s.authors     = ["Daniel Pritchett"]
+  s.authors     = ["Daniel Pritchett, Jason Fleetwood-Boldt"]
   s.email       = 'dpritchett@gmail.com'
-  s.homepage    = 'http://github.com/mackweldon/solidus_shipping_labeler'
+  s.homepage    = 'http://github.com/solidusio-contrib/solidus_shipping_labeler'
   s.summary     = 'Solidus extension for providing shipping and return labels for FedEx shipments'
   s.description = 'Solidus extension for providing shipping and return labels for FedEx shipments'
   s.required_ruby_version = '>= 1.9.3'
