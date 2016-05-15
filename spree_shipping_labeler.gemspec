@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('solidus_core',   '>= 1.0')
-  s.add_dependency('coffee-rails', '~> 4.0.0')
+  s.add_dependency('coffee-rails', '> 4.0.0')
   s.add_dependency('fedex',        '>= 3.6.1')
 
   s.add_development_dependency 'pry'
