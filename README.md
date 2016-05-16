@@ -1,17 +1,41 @@
-# What
-This is intended to be a [Spree](https://github.com/spree/spree) extension that leverages the `fedex` gem to print RMA labels.
+This is intended to be a [Solidus](https://github.com/solidusio/solidus) extension that leverages the `fedex` gem to print FedEx labels for your Return Authorizations (RAs). It provides two new tables to store the labels and a utility table to store box sizes. On the Admin screen, it provides Admin operators the ability to generate a new FedEx label automatically, using the customer's address as the 'from' address and Stock location that will be receiving the package as the 'to' address. 
+
+The labels are generated as PDF and are compliant with FedEx's requirements for computer generated labels (in fact, FedEx generates the PDF and sends it back to us and all you need to do is send the PDF). Note that this requires a FedEx account. During the setup process, FedEx will require you to generate a sample label, print it out, and send it back to them. 
+
 
 ## Screenshot
 ![screenshot](http://i.imgur.com/tj7EqUP.png)
 
-## install
-* Add 
+# Installation
+* Add to your Gemfile & bundle install
 ```
 gem 'solidus_shipping_labeler', github: 'solidusio-contrib/solidus_shipping_labeler'
 ```
 
+* to generate the migrations and seed the Shipping Box data
+```
+bundle exec rake railties:install:migrations FROM=solidus_shipping_labeler` 
+```
 
-* `bundle exec rake railties:install:migrations FROM=solidus_shipping_labeler` to generate the migrations and seed the Shipping Box data.
+* In your app, create a new file at ```initializers/fed_ex.rb```
+
+```
+fed_ex_config = YAML.load_file("config/fedex_api.yml")[Rails.env]
+
+SpreeShippingLabeler::FedExConnection.config({
+    key:            fed_ex_config["key"],
+    password:       fed_ex_config["password"],
+    meter:          fed_ex_config["meter"],
+    account_number: fed_ex_config["account_number"],
+    mode:           fed_ex_config["mode"]
+})
+
+```
+
+(you will of course need a file at ```config/fedex_api.yml``` with YAML-based configuration. here's an example file https://gist.github.com/jasonfb/8a4f51da2c809a9d971a8aad1f26495e)
+
+If you prefer to use ENV variables for configuration instead of storing credentials in your source, modify your initialization file accordingly. 
+
 
 
 # Structure
