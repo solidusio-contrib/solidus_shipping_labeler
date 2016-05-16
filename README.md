@@ -1,6 +1,8 @@
 This is intended to be a [Solidus](https://github.com/solidusio/solidus) extension that leverages the `fedex` gem to print FedEx labels for your Return Authorizations (RAs). It provides two new tables to store the labels and a utility table to store box sizes. On the Admin screen, it provides Admin operators the ability to generate a new FedEx label automatically, using the customer's address as the 'from' address and Stock location that will be receiving the package as the 'to' address. 
 
-The labels are generated as PDF and are compliant with FedEx's requirements for computer generated labels (in fact, FedEx generates the PDF and sends it back to us and all you need to do is send the PDF). Note that this requires a FedEx account. During the setup process, FedEx will require you to generate a sample label, print it out, and send it back to them. 
+The labels are generated as PDF and are compliant with FedEx's requirements for computer generated labels (in fact, FedEx generates the PDF and sends it back to us and all you need to do is send the PDF). Note that this requires a FedEx account and you will need to set up "FedEx Web Services" for you account (speak to your FedEx account manager or call FedEx support for assistance).  
+
+During the setup process, FedEx will require you to generate a sample label, print it out, and send it back to them. 
 
 
 ## Screenshot
@@ -14,7 +16,7 @@ gem 'solidus_shipping_labeler', github: 'solidusio-contrib/solidus_shipping_labe
 
 * to generate the migrations and seed the Shipping Box data
 ```
-bundle exec rake railties:install:migrations FROM=solidus_shipping_labeler` 
+bundle exec rake railties:install:migrations FROM=solidus_shipping_labeler
 ```
 
 * In your app, create a new file at ```initializers/fed_ex.rb```
