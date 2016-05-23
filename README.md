@@ -6,7 +6,7 @@ During the setup process, FedEx will require you to generate a sample label, pri
 
 
 ## Screenshot
-![screenshot](http://i.imgur.com/tj7EqUP.png)
+![screenshot](http://content.screencast.com/users/JasonFB/folders/Jing/media/b46a8034-ac78-4204-8f46-9ce5b1635d27/00001333.png)
 
 # Installation
 * Add to your Gemfile & bundle install
