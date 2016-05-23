@@ -1,4 +1,6 @@
-This is intended to be a [Solidus](https://github.com/solidusio/solidus) extension that leverages the `fedex` gem to print FedEx labels for your Return Authorizations (RAs). It provides two new tables to store the labels and a utility table to store box sizes. On the Admin screen, it provides Admin operators the ability to generate a new FedEx label automatically, using the customer's address as the 'from' address and Stock location that will be receiving the package as the 'to' address. 
+Note: Currently this gem is written only for FedEx shipping labels. 
+
+This [Solidus](https://github.com/solidusio/solidus) extension leverages the `fedex` gem to print FedEx labels for your Return Authorizations (RAs). It provides two new tables to store the labels and a utility table to store box sizes. On the Admin screen, it provides Admin operators the ability to generate a new FedEx label automatically, using the customer's address as the 'from' address and Stock location that will be receiving the package as the 'to' address. 
 
 The labels are generated as PDF and are compliant with FedEx's requirements for computer generated labels (in fact, FedEx generates the PDF and sends it back to us and all you need to do is send the PDF). Note that this requires a FedEx account and you will need to set up "FedEx Web Services" for you account (speak to your FedEx account manager or call FedEx support for assistance).  
 
@@ -72,10 +74,14 @@ If you prefer to use ENV variables for configuration instead of storing credenti
 Make sure your stock location has complete address and phone number details. (FedEx requires a phone number to generate a label and will complain if one is not present.)
 
 
-# Operator Use
+# Admin Use
 
 1. On a completed and shipped order, create a new RA (Return Authorization)
 2. After you create the RA, you will land back on the screen showing the list of RAs associated with that order
 3. Edit your RA, at the bottom of the screen you will see a drop-down to choose the box size and a button "Generate New Label"
+4. You will see a numeric key corresponding to the new label. When you click it, it will open in a new window allowing you to print as PDF or print directly from your computer. 
+
+Note although it is an edge case, you can create multiple labels for a single Return Authorization. For example, if the customer needed to send more than one box back or might have used the first label issued. 
+
 
 
