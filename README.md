@@ -38,7 +38,7 @@ SpreeShippingLabeler::FedExConnection.config({
 
 (you will of course need a file at ```config/fedex_api.yml``` with YAML-based configuration. here's an example file https://gist.github.com/jasonfb/8a4f51da2c809a9d971a8aad1f26495e)
 
-If you prefer to use ENV variables for configuration instead of storing credentials in your source, modify your initialization file accordingly. 
+*If you prefer to use ENV variables for configuration instead of storing credentials in your source, modify your initialization file accordingly.*
 
 
 
