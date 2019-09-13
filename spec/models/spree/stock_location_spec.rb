@@ -5,13 +5,13 @@ describe Spree::StockLocation do
 
   describe "public instance methods" do
     it "should have a :company method returning a string" do
-      subject.should respond_to(:company)
-      subject.company.is_a?(String).should be_true
+      expect(subject).to respond_to(:company)
+      expect(subject.company).to be_a(String)
     end
 
     it "should have a :fedex_formatted method that returns a hash" do
-      subject.should respond_to(:fedex_formatted)
-      subject.fedex_formatted.is_a?(Hash).should be_true
+      expect(subject).to respond_to(:fedex_formatted)
+      expect(subject.fedex_formatted).to be_a(String)
     end
   end
 end

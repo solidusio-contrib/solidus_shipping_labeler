@@ -1,12 +1,11 @@
 require 'spec_helper'
-require 'pry'
 
 feature "Admin order RMA label creation", js: true do
 
   stub_authorization!
 
-  let(:order) { FactoryGirl.create(:shipped_order) }
-  let(:rma) { FactoryGirl.create(:return_authorization) }
+  let(:order) { FactoryBot.create(:shipped_order) }
+  let(:rma) { FactoryBot.create(:return_authorization) }
 
   scenario 'creating gift card' do
     visit spree.edit_admin_order_return_authorization_path(rma.order, rma)
