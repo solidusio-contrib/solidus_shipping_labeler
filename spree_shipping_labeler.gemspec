@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_core', '~> 2.0'
   s.add_dependency 'coffee-rails', '> 4.0.0'
   s.add_dependency 'fedex', '>= 3.6.1'
+  s.add_dependency 'deface'
 
   s.add_development_dependency 'webmock'
   s.add_development_dependency 'capybara'
@@ -29,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'puma'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'selenium-webdriver'
+  s.add_development_dependency 'webdrivers'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'solidus_support'

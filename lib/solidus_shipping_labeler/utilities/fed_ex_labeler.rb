@@ -69,7 +69,7 @@ module Utilities
     end
 
     def service_name
-      SpreeShippingLabeler::FedExConnection.service_name_mappings.fetch('Fedex::Ground')
+      SolidusShippingLabeler::FedExConnection.service_name_mappings.fetch('Fedex::Ground')
     end
 
     #######################
@@ -77,7 +77,7 @@ module Utilities
     #######################
 
     def self.fedex_connection
-      SpreeShippingLabeler::FedExConnection.connection
+      SolidusShippingLabeler::FedExConnection.connection
     end
   end
 end

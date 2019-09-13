@@ -1,6 +1,6 @@
 require 'yaml'
 
-module SpreeShippingLabeler
+module SolidusShippingLabeler
   module FedExConnection
     attr_accessor :params, :company
 
@@ -9,11 +9,11 @@ module SpreeShippingLabeler
     end
 
     def self.config params
-      raise "No 'key' passed to SpreeShippingLabeler::FedExConnection#config" if !params[:key]
-      raise "No 'password' passed to SpreeShippingLabeler::FedExConnection#config" if !params[:password]
-      raise "No 'meter' passed to SpreeShippingLabeler::FedExConnection#config" if !params[:meter]
-      raise "No 'account_number' passed in SpreeShippingLabeler::FedExConnection#config" if !params[:account_number]
-      raise "No 'mode' passed in SpreeShippingLabeler::FedExConnection#config" if !params[:mode]
+      raise "No 'key' passed to SolidusShippingLabeler::FedExConnection#config" if !params[:key]
+      raise "No 'password' passed to SolidusShippingLabeler::FedExConnection#config" if !params[:password]
+      raise "No 'meter' passed to SolidusShippingLabeler::FedExConnection#config" if !params[:meter]
+      raise "No 'account_number' passed in SolidusShippingLabeler::FedExConnection#config" if !params[:account_number]
+      raise "No 'mode' passed in SolidusShippingLabeler::FedExConnection#config" if !params[:mode]
 
       raise "Expected 'mode' setting to be either 'test' or 'production'" if !['test','production'].include?(params[:mode])
 
@@ -22,7 +22,7 @@ module SpreeShippingLabeler
     end
 
     def self.connection_params
-      raise "SpreeShippingLabeler::FedExConnection not configured!" if @params.nil?
+      raise "SolidusShippingLabeler::FedExConnection not configured!" if @params.nil?
       @params
     end
 

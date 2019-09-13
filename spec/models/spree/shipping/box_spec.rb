@@ -15,11 +15,10 @@ describe Spree::Shipping::Box do
 
   context "configuration" do
     context "validations" do
-      it { expect(subject).to validate_uniqueness_of(:description).case_insensitive }
-    end
-
-    describe "associations" do
-      it { expect(subject).to have_many(:packages) }
+      it 'validates uniqueness of description' do
+        Spree::Shipping::Box.create!(description: 'test')
+        expect(subject).to validate_uniqueness_of(:description).case_insensitive
+      end
     end
   end
 end

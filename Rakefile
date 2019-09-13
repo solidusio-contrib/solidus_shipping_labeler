@@ -25,5 +25,5 @@ end
 desc 'Generates a dummy app for testing'
 task :test_app do
   ENV['LIB_NAME'] = 'solidus_shipping_labeler'
-  Rake::Task['extension:test_app'].invoke
+  Rake::Task['extension:test_app'].invoke 'Spree::User'
 end
