@@ -1,4 +1,4 @@
-class AddReturnLabels < ActiveRecord::Migration
+class AddReturnLabels < SolidusSupport::Migration[4.2]
   def change
     create_table "spree_return_labels", :force => true do |t|
       t.belongs_to :return_authorization
