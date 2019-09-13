@@ -1,3 +1,7 @@
+# solidus_shipping_labeler
+
+[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_shipping_labeler.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_shipping_labeler)
+
 Note: Currently this gem is written only for FedEx shipping labels. 
 
 This [Solidus](https://github.com/solidusio/solidus) extension leverages the `fedex` gem to print FedEx labels for your Return Authorizations (RAs). It provides two new tables to store the labels and a utility table to store box sizes. On the Admin screen, it provides Admin operators the ability to generate a new FedEx label automatically, using the customer's address as the 'from' address and Stock location that will be receiving the package as the 'to' address. 
