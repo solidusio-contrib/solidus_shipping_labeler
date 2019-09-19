@@ -1,7 +1,7 @@
 module Spree
   module Api
     class ShippingLabelsController < Spree::Api::BaseController
-      before_filter :find_order
+      before_action :find_order
 
       def generate_return_label
         @rma   = @order.return_authorizations.find(params[:id])

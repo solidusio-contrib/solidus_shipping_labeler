@@ -1,4 +1,4 @@
-class AddShippingBoxes < ActiveRecord::Migration
+class AddShippingBoxes < SolidusSupport::Migration[4.2]
   def change
     create_table "spree_shipping_boxes", :force => true do |t|
       t.string   "description",                :null => false

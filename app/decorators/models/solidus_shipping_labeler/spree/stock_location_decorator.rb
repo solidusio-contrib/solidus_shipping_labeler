@@ -5,7 +5,7 @@ Spree::StockLocation.class_eval do
 
   def fedex_formatted
     {
-      company:       SpreeShippingLabeler::FedExConnection.company,
+      company:       SolidusShippingLabeler::FedExConnection.company,
       phone_number:  phone,
       address:       [address1, address2].compact.join(' '),
       city:          city,

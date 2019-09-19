@@ -1,4 +1,4 @@
-class SpreeShippingLabelerAbility
+class SolidusShippingLabelerAbility
   include CanCan::Ability
   def initialize(user)
     can :manage, Spree::ReturnAuthorization do |rma|
@@ -7,4 +7,4 @@ class SpreeShippingLabelerAbility
   end
 end
 
-Spree::Ability.register_ability(SpreeShippingLabelerAbility)
+Spree::Ability.register_ability(SolidusShippingLabelerAbility)

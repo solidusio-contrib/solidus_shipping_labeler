@@ -17,20 +17,22 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency('solidus_core',   '>= 1.0')
-  s.add_dependency('coffee-rails', '> 4.0.0')
-  s.add_dependency('fedex',        '>= 3.6.1')
+  s.add_dependency 'solidus_core', '~> 2.0'
+  s.add_dependency 'coffee-rails', '> 4.0.0'
+  s.add_dependency 'fedex', '>= 3.6.1'
+  s.add_dependency 'deface'
 
-  s.add_development_dependency 'pry'
   s.add_development_dependency 'webmock'
-  s.add_development_dependency 'capybara', '~> 2.0'
-  s.add_development_dependency 'database_cleaner', '~> 1.0.1'
-  s.add_development_dependency 'factory_girl', '~> 4.2'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'factory_bot'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails',  '~> 2.13'
+  s.add_development_dependency 'puma'
+  s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'shoulda-matchers', '>= 3.0.1'
+  s.add_development_dependency 'webdrivers'
+  s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'solidus_support'
   s.add_development_dependency 'sqlite3'
 end

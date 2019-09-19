@@ -50,7 +50,7 @@ module Spree
     end
 
     def care_of
-      base = SpreeShippingLabeler::FedExConnection.connection_params[:care_of]
+      base = SolidusShippingLabeler::FedExConnection.connection_params[:care_of]
       base.blank? ? base : "co #{base}"
     end
 

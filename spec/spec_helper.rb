@@ -1,56 +1,27 @@
-# Setup simplecov first to make sure coverage happens through everything.
-require 'simplecov'
-SimpleCov.start do
-  add_filter '/config/'
-  add_group 'Controllers', 'app/controllers'
-  add_group 'Helpers', 'app/helpers'
-  add_group 'Mailers', 'app/mailers'
-  add_group 'Models', 'app/models'
-  add_group 'Libraries', 'lib'
-  add_group 'Specs', 'spec'
-end
+# frozen_string_literal: true
 
-# Configure Rails Environment
-ENV['RAILS_ENV'] = 'test'
-require File.expand_path('../dummy/config/environment.rb',  __FILE__)
-require 'rspec/rails'
+require "simplecov"
+SimpleCov.start "rails"
 
-require 'database_cleaner'
-require 'factory_girl'
-FactoryGirl.find_definitions
-require 'ffaker'
-require 'shoulda-matchers'
+ENV["RAILS_ENV"] ||= "test"
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
-# Requires factories defined in spree_core
-require 'spree/testing_support/factories'
-require 'spree/testing_support/authorization_helpers'
+require 'solidus_support'
+require "solidus_support/extension/feature_helper"
+require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/capybara_ext'
-require 'spree/testing_support/url_helpers'
+
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |f| require f }
+
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.infer_spec_type_from_file_location!
+  config.raise_errors_for_deprecations!
+
+  config.example_status_persistence_file_path = "./spec/examples.txt"
+
   config.include Spree::TestingSupport::UrlHelpers
-  config.extend Spree::TestingSupport::AuthorizationHelpers::Request, :type => :feature # once spree updates this can be removed
-  config.color = true
-
-  # Set to false for running JS drivers.
-  config.use_transactional_fixtures = false
-
-  config.before :each do
-    if example.metadata[:js]
-      DatabaseCleaner.strategy = :truncation
-    else
-      DatabaseCleaner.strategy = :transaction
-    end
-    DatabaseCleaner.start
-  end
-
-  config.after :each do
-    DatabaseCleaner.clean
-  end
-
+  config.include Spree::TestingSupport::ControllerRequests, type: :controller
 end
