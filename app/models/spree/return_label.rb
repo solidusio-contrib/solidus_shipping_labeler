@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Spree
-  class ReturnLabel < ActiveRecord::Base
+  class ReturnLabel < ApplicationRecord
     after_create :generate_label!
 
     belongs_to :return_authorization
@@ -11,7 +13,7 @@ module Spree
     default_scope { order "created_at desc" }
 
     def show_tracking_number
-      self.tracking_number || 'No tracking number available'
+      tracking_number || 'No tracking number available'
     end
 
     def generate_label!

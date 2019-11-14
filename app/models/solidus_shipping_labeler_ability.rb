@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class SolidusShippingLabelerAbility
   include CanCan::Ability
   def initialize(user)
-    can :manage, Spree::ReturnAuthorization do |rma|
+    can :manage, Spree::ReturnAuthorization do |_rma|
       user.admin?
     end
   end

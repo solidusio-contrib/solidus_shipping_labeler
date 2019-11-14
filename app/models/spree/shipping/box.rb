@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Spree
   module Shipping
-    class Box < ActiveRecord::Base
+    class Box < ApplicationRecord
       self.table_name = "spree_shipping_boxes"
 
-      validates_uniqueness_of :description, case_sensitive: false
+      validates :description, uniqueness: { case_sensitive: false }
 
       def self.preferred_for_returns
         first

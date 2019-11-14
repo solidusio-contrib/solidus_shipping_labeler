@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::Shipping::Box do
@@ -16,7 +18,7 @@ describe Spree::Shipping::Box do
   context "configuration" do
     context "validations" do
       it 'validates uniqueness of description' do
-        Spree::Shipping::Box.create!(description: 'test')
+        described_class.create!(description: 'test')
         expect(subject).to validate_uniqueness_of(:description).case_insensitive
       end
     end

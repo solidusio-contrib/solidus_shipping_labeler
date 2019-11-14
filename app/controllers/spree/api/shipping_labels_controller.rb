@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   module Api
     class ShippingLabelsController < Spree::Api::BaseController
@@ -10,6 +12,7 @@ module Spree
       end
 
       private
+
       def find_order
         @order = Spree::Order.where(number: params[:order_id]).first
       end
