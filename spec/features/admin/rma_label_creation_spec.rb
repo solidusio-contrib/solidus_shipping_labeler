@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-feature "Admin order RMA label creation", js: true do
+describe "Admin order RMA label creation", js: true do
   let(:current_user) { FactoryBot.create(:admin_user) }
 
   let(:order) { FactoryBot.create(:shipped_order) }
@@ -12,12 +14,12 @@ feature "Admin order RMA label creation", js: true do
 
     allow(Utilities::FedExLabeler).to receive(:new)
       .and_return(instance_double('Utilities::FedExLabeler', generate: {
-        label: 'test',
-        tracking_number: 'FEDEX123456',
-      }))
+                                    label: 'test',
+                                    tracking_number: 'FEDEX123456',
+                                  }))
   end
 
-  scenario 'creating a return label' do
+  it 'creating a return label' do
     Spree::Shipping::Box.create!(description: 'test')
 
     visit spree.edit_admin_order_return_authorization_path(rma.order, rma)

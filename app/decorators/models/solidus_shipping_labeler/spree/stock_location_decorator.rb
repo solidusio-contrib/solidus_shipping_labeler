@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::StockLocation.class_eval do
   def company
     "Working Title"
@@ -5,14 +7,14 @@ Spree::StockLocation.class_eval do
 
   def fedex_formatted
     {
-      company:       SolidusShippingLabeler::FedExConnection.company,
-      phone_number:  phone,
-      address:       [address1, address2].compact.join(' '),
-      city:          city,
-      state:         state && state.abbr,
-      postal_code:   zipcode,
-      country_code:  country && country.iso,
-      residential:   !company.blank?,
+      company: SolidusShippingLabeler::FedExConnection.company,
+      phone_number: phone,
+      address: [address1, address2].compact.join(' '),
+      city: city,
+      state: state&.abbr,
+      postal_code: zipcode,
+      country_code: country&.iso,
+      residential: company.present?,
     }
   end
 

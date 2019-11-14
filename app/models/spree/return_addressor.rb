@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   class ReturnAddressor
     attr_reader :rma, :order, :return_label
@@ -13,9 +15,11 @@ module Spree
       return_label.shipping_box
     end
 
-    def height; box.height; end
-    def length; box.length; end
-    def width;  box.width;  end
+    delegate :height, to: :box
+
+    delegate :length, to: :box
+
+    delegate :width, to: :box
 
     def weight
       calc_weight = rma.inventory_units.flat_map(&:variant).sum(&:weight)
@@ -30,13 +34,9 @@ module Spree
       rma.reason
     end
 
-    def order_number
-      order.number
-    end
+    delegate :number, to: :order, prefix: true
 
-    def rma_number
-      rma.number
-    end
+    delegate :number, to: :rma, prefix: true
 
     def formatted_origin
       order.shipping_address.fedex_formatted
@@ -44,9 +44,9 @@ module Spree
 
     def formatted_destination
       base = Spree::StockLocation.return_processing.fedex_formatted
-      base.merge({
+      base.merge(
         name: care_of
-      })
+      )
     end
 
     def care_of

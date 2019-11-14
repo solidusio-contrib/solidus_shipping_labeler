@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SolidusShippingLabeler
   class Engine < Rails::Engine
     engine_name 'solidus_shipping_labeler'

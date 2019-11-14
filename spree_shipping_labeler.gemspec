@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# frozen_string_literal: true
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
@@ -17,10 +17,10 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency 'solidus_core', '~> 2.0'
   s.add_dependency 'coffee-rails', '> 4.0.0'
-  s.add_dependency 'fedex', '>= 3.6.1'
   s.add_dependency 'deface'
+  s.add_dependency 'fedex', '>= 3.6.1'
+  s.add_dependency 'solidus_core', '~> 2.0'
 
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'solidus_extension_dev_tools'

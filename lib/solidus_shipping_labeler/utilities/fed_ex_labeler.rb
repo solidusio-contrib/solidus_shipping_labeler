@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generate ZPLII shipping labels for thermal printers.
 # Connects to FedEx and pulls in a plaintext label.
 #
@@ -5,11 +7,11 @@
 require 'fedex'
 
 module Utilities
-  class LabelError < Exception; end
+  class LabelError < RuntimeError; end
 
   class FedExLabeler
     attr_reader :package
-    def initialize(pkg=nil)
+    def initialize(pkg = nil)
       @package = pkg
     end
 
@@ -24,6 +26,7 @@ module Utilities
     #######################
 
     private
+
     # Makes recursive labeling a bit easier to test
     def companion_labeler
       @companion_memo ||= self.class.new
@@ -31,13 +34,13 @@ module Utilities
 
     def fedex_generate
       begin
-        result = self.class.fedex_connection.label({
+        result = self.class.fedex_connection.label(
           packages: [
             {
               weight: { value: package.weight, units: "LB" },
               dimensions: {
                 length: package.length,
-                width:  package.width,
+                width: package.width,
                 height: package.height,
                 units: "IN"
               },
@@ -47,23 +50,23 @@ module Utilities
               ],
             }
           ],
-          recipient:  package.formatted_destination,
-          shipper:    package.formatted_origin,
+          recipient: package.formatted_destination,
+          shipper: package.formatted_origin,
           label_specification: {
-            image_type:       "PDF",
-            filename:         package.return_filename,
+            image_type: "PDF",
+            filename: package.return_filename,
           },
           service_type: service_name,
           shipping_options: {
             return_reason: package.return_reason,
           },
-        })
-      rescue Exception => err
-        raise Utilities::LabelError, err.message
+        )
+      rescue Exception => e
+        raise Utilities::LabelError, e.message
       end
 
       {
-        label:           result.image,
+        label: result.image,
         tracking_number: result.options[:tracking_number]
       }
     end
