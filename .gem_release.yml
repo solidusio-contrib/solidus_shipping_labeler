@@ -1,0 +1,5 @@
+bump:
+  recurse: false
+  file: 'lib/solidus_shipping_labeler/version.rb'
+  message: Bump SolidusShippingLabeler to %{version}
+  tag: true
