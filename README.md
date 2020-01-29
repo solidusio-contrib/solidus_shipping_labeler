@@ -30,7 +30,7 @@ bundle exec rake railties:install:migrations FROM=solidus_shipping_labeler
 ```
 fed_ex_config = YAML.load_file("config/fedex_api.yml")[Rails.env]
 
-SpreeShippingLabeler::FedExConnection.config({
+SolidusShippingLabeler::FedExConnection.config({
     key:            fed_ex_config["key"],
     password:       fed_ex_config["password"],
     meter:          fed_ex_config["meter"],
