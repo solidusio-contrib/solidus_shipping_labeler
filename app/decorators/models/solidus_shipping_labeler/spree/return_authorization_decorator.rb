@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
-Spree::ReturnAuthorization.class_eval do
-  has_many :return_labels, class_name: "Spree::ReturnLabel"
+module SolidusShippingLabeler::Spree::ReturnAuthorizationDecorator
+  def self.prepended(base)
+    base.has_many :return_labels, class_name: "Spree::ReturnLabel"
+  end
+
+  Spree::ReturnAuthorization.prepend self
 end

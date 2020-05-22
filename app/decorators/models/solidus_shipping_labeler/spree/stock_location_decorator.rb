@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
-Spree::StockLocation.class_eval do
+module SolidusShippingLabeler::Spree::StockLocationDecorator
+  module ClassMethods
+    # Shipping destination for returns
+    def return_processing
+      first
+    end
+  end
+
+  def self.prepended(base)
+    base.singleton_class.prepend ClassMethods
+  end
+
   def company
     "Working Title"
   end
@@ -18,8 +29,5 @@ Spree::StockLocation.class_eval do
     }
   end
 
-  # Shipping destination for returns
-  def self.return_processing
-    first
-  end
+  Spree::StockLocation.prepend self
 end

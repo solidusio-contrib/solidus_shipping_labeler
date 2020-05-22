@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Spree::Address.class_eval do
+module SolidusShippingLabeler::Spree::AddressDecorator
   def fedex_formatted
     {
       name: full_name,
@@ -14,4 +14,6 @@ Spree::Address.class_eval do
       residential: false, # going commercial to get access to FedEx Ground
     }
   end
+
+  Spree::Address.prepend self
 end
