@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe "Admin order RMA label creation", js: true do
-  let(:current_user) { FactoryBot.create(:admin_user) }
+  let(:current_user) { FactoryBot.create(:admin_user, :with_api_key) }
 
   let(:order) { FactoryBot.create(:shipped_order) }
   let(:rma) { FactoryBot.create(:return_authorization) }
